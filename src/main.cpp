@@ -17,5 +17,9 @@ int main()
     treeList->postOrder();
     cout << endl;
     treeList->inOrder();
+    cout << endl;
+    treeList->remove(25);
+
+    treeList->preOrder();
     
 }

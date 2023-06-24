@@ -5,7 +5,6 @@ class Node
 {
 public: 
     Node(int value);
-    ~Node();
     int value;
     Node* right;
     Node* left;

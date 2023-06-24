@@ -153,3 +153,42 @@ void Tree::inOrder(Node *active)
         }
     }
 }
+
+void Tree::remove(int value){
+    remove(value,root);
+}
+
+void Tree::remove(int value,Node* &active){
+    if(value == 0 ) return;
+    else if(value < active->value){
+        remove(value , active->left);
+    }
+    else if(value > active->value){
+        remove(value, active->right);
+    }
+    else{
+        if(active->left && active->right){
+
+            active->value = maxValue(active->left);
+            remove(active->value , active->left);
+        }
+        else{
+            Node* willbedeleted = active;
+            if(active->left){
+                active = active->left;
+            }
+            else{
+                active = active->right;
+            }
+
+            delete willbedeleted;
+        }
+    }
+}
+
+int Tree::maxValue(Node* active){
+    if(active->right){
+        return maxValue(active->right);
+    }
+    return active->value;
+}
